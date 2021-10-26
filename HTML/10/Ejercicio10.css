@@ -1,0 +1,74 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 22 oct. 2021, 18:08:52
+    Author     : blackstrack
+*/
+
+#titulo {
+    color: aqua;
+}
+
+#Suspendide {
+    color: red;
+}
+
+.destacado {
+    color: yellow;
+}
+
+#subtitulo {
+    color: blue;
+}
+
+a {
+    color: red;
+}
+
+em {
+    color: blue;
+}
+
+.especial2 {
+    color: violet;
+}
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+td{
+    border: 2px solid black;
+    color: green;
+}
+
+th {
+    border: 2px solid black;
+}
+
+.especial {
+    color: yellow;
+}
+
+.TituloFIla2 {
+    color: red;
+}
+
+tfoot {
+    color: red;
+}
+
+.Curabitur {
+    color: green;
+}
+
+#adicional {
+    color: #666600;
+}
+
+span {
+    color: pink;
+}

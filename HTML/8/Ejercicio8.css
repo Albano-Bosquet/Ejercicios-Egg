@@ -1,0 +1,29 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 21 oct. 2021, 22:38:07
+    Author     : blackstrack
+*/
+
+a {
+    color: red;
+}
+
+a:hover {
+    color: white;
+}
+
+a:active {
+    color: seagreen;
+}
+
+a:visited {
+    color : #CCC;
+}
+
+.ContenedorMaster {
+    display: block;
+    float: right;
+}

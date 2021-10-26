@@ -1,0 +1,24 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 21 oct. 2021, 22:25:49
+    Author     : blackstrack
+*/
+
+body {
+    background-color: #b7ffaf;
+}
+
+.ContenedorListaUno {
+    color: #1f6716;
+    font-family: monospace;
+    font-size: 15px;
+}
+
+.ContenedorListaDos {
+    color: #174812;
+    font-family: fantasy;
+    font-size: 15px;
+}

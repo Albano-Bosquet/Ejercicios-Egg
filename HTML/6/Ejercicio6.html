@@ -1,0 +1,67 @@
+<!--Por ultimo vamos a crear un formulario para registrar un usuario-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="Datos" method="post">
+        <!--Casillas-->
+        <label for="nombre">Nombre de usuario</label>
+        <br>
+        <input type="text" id="nombre">
+        <br>
+
+        <label for="contrasenia">Contraseña del usuario</label>
+        <br>
+        <input type="password" id="contrasenia">
+        <br>
+
+        <label for="edad">Edad del usuario</label>
+        <br>
+        <input type="number" id="edad">
+        <br>
+
+        <label for="fecha">Fecha de nacimiento del usuario</label>
+        <br>
+        <input type="date" id="fecha">
+        <br>
+
+        <!--Seleccion-->
+        <input type="radio" id="hombre" name="Genero">
+        <label for="hombre">Hombre</label>
+        <br>
+
+        <input type="radio" id="mujer" name="Genero">
+        <label for="mujer">Mujer</label>
+        <br>
+
+        <input type="radio" id="pnd" name="Genero">
+        <label for="pnd">Prefiero no decirlo</label>
+
+
+        <h3>Pais de nacimiento del usuario</h3>
+        <select name="Pais">
+            <option>Argentina</option>
+            <option>Uruguay</option>
+            <option>Paraguay</option>
+            <option>Chile</option>
+            <option>Bolivia</option>
+            <option>Peru</option>
+            <option>Colombia</option>
+        </select>
+        <br>
+
+        <!--Botones-->
+        <button type="submit">Enviar</button>
+        <button type="reset">Borrar</button>
+    </form>
+</body>
+
+</html>

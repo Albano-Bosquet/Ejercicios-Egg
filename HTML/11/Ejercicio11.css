@@ -1,0 +1,54 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 22 oct. 2021, 18:45:20
+    Author     : blackstrack
+*/
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+tr {
+    border: 2px solid black;
+}
+
+.TiposDeCambio {
+    background-image: url("Imagenes/fondo_gris.gif");
+    background-size: cover;
+}
+
+.color1 {
+    padding: 10px;
+    background-color: #FFFFCC;
+}
+
+.color2 {
+    padding: 10px;
+    background-color: #FFFFFC;
+}
+
+.Tipo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: #d8fbd7;
+    padding: 10px;
+    border: none;
+}
+
+.Tipo2 {
+    padding: 10px;
+}
+
+.Tipo3 {
+    width: 100px;
+}
+
+body {
+    font-family: monospace;
+}
+
