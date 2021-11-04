@@ -1,0 +1,38 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 4 nov. 2021, 18:22:10
+    Author     : blackstrack
+*/
+
+#barra {
+    
+}
+
+#botones {
+    margin: 3px;
+}
+
+#imagenes {
+    width: 30px;
+    margin: 6px;
+}
+
+body {
+    background-image: url("../images/1672.jpg");
+    background-size: cover;
+}
+
+.dropdown {
+    margin: 3px;
+}
+
+.formulario{
+    width: 300px;
+    margin: 0 auto;
+    color: white;
+    -webkit-text-stroke: 0.6px black;
+    font-size: 20px;
+}
