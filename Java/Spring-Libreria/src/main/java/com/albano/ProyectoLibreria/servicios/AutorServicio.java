@@ -99,6 +99,21 @@ public class AutorServicio {
         
     }
     
+    @Transactional
+    public void alta(String id) throws Exception {
+        
+        //Buscamos el autor
+        Autor autor = new Autor();
+        autor = autorRepositorio.buscarPorID(id);
+        
+        //Modificamos los valores
+        autor.setAlta(true);
+        
+        //Cargamos en la DB
+        autorRepositorio.save(autor);
+        
+    }
+    
     @Transactional (readOnly = true)
     public Autor buscarPorNombre(String nombre){
         return autorRepositorio.buscarPorNombre(nombre);

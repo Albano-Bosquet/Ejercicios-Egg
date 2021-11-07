@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -33,10 +34,11 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    public void crear(MultipartFile archivo, String nombre, String clave, String mail) throws Exception {
+    @Transactional
+    public void crear(MultipartFile archivo, String nombre, String clave, String mail, String clave2) throws Exception {
 
         //Realizamos las validaciones
-        validar(nombre, clave);
+        validar(nombre, clave, clave2);
 
         //Guardamos los valores
         Usuario usuario = new Usuario();
@@ -56,10 +58,11 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-    public void modificar(MultipartFile archivo, String nombre, String clave, String id) throws Exception {
+    @Transactional
+    public void modificar(MultipartFile archivo, String nombre, String clave, String id, String clave2) throws Exception {
 
         //Realizamos las validaciones
-        validar(nombre, clave);
+        validar(nombre, clave, clave2);
 
         //Buscamos el usuario
         Usuario usuario = new Usuario();
@@ -71,6 +74,7 @@ public class UsuarioServicio implements UserDetailsService {
         //Generamos el encriptador
         String encriptada = new BCryptPasswordEncoder().encode(clave);
         usuario.setClave(encriptada);
+        usuario.setClave2(encriptada);
 
         //Cargamos la foto
         String idFoto = null;
@@ -86,6 +90,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
+    @Transactional
     public void eliminar(String id) {
 
         //Buscamos el usuario
@@ -97,13 +102,16 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-    public void validar(String nombre, String clave) throws Exception {
+    public void validar(String nombre, String clave, String clave2) throws Exception {
 
         if (nombre == null) {
             throw new Exception("El nombre del usuario no puede ser nulo");
         }
         if (clave == null) {
             throw new Exception("La clave del usuario no puede ser nula");
+        }
+        if (!(clave.equals(clave2))){
+            throw new Exception("Las claves del usuario difieren");
         }
 
     }

@@ -115,6 +115,21 @@ public class LibroServicio {
 
     }
     
+    @Transactional
+    public void alta(String id) throws Exception {
+        
+        //Buscamos el libro
+        Libro libro = new Libro();
+        libro = libroRepositorio.buscarPorID(id);
+        
+        //Modificamos los valores
+        libro.setAlta(true);
+        
+        //Cargamos en la DB
+        libroRepositorio.save(libro);
+        
+    }
+    
     @Transactional (readOnly = true)
     public Libro buscarPorISBN(Long isbn) {
         return libroRepositorio.buscarPorISBN(isbn);

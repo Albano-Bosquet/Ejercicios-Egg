@@ -7,9 +7,9 @@ package com.albano.ProyectoLibreria.entidades;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -18,19 +18,20 @@ import javax.persistence.OneToOne;
 @Entity
 public class Usuario implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
     private String nombre;
     private String clave;
+    private String clave2;
     private String mail;
     
     @OneToOne
     private Foto foto;
 
     //Getters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
@@ -42,6 +43,10 @@ public class Usuario implements Serializable {
         return clave;
     }
 
+    public String getClave2() {
+        return clave2;
+    }
+
     public Foto getFoto() {
         return foto;
     }
@@ -51,7 +56,7 @@ public class Usuario implements Serializable {
     }
     
     //Setters
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -61,6 +66,10 @@ public class Usuario implements Serializable {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public void setClave2(String clave2) {
+        this.clave2 = clave2;
     }
 
     public void setFoto(Foto foto) {

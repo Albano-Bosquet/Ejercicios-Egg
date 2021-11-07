@@ -7,9 +7,9 @@ package com.albano.ProyectoLibreria.entidades;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -18,9 +18,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class Autor implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombre;
     private Boolean alta;
@@ -44,7 +44,7 @@ public class Autor implements Serializable {
     public Foto getFoto() {
         return foto;
     }
-    
+
     //Setters
     public void setId(String id) {
         this.id = id;
@@ -86,5 +86,5 @@ public class Autor implements Serializable {
     public String toString() {
         return "com.albano.ProyectoLibreria.entidades.Autor[ id=" + id + " ]";
     }
-    
+
 }

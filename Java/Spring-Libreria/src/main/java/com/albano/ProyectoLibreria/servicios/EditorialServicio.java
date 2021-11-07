@@ -99,6 +99,21 @@ public class EditorialServicio {
         
     }
     
+    @Transactional
+    public void alta(String id) throws Exception {
+        
+        //Buscamos la editorial
+        Editorial editorial = new Editorial();
+        editorial = editorialRepositorio.buscarPorID(id);
+        
+        //Modificamos los valores
+        editorial.setAlta(true);
+        
+        //Cargamos en la DB
+        editorialRepositorio.save(editorial);
+        
+    }
+    
     @Transactional (readOnly = true)
     public Editorial buscarPorNombre(String nombre) {
         return editorialRepositorio.buscarPorNombre(nombre);

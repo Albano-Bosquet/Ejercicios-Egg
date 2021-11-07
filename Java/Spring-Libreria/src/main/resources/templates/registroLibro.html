@@ -3,7 +3,7 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <title>REGISTRO Libro</title>
         <meta charset="UTF-8">
@@ -25,9 +25,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 Secciones
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="/registroLibro">Registro Libro</a></li>
-                                <li><a class="dropdown-item" href="/registroAutor">Registro Autor</a></li>
-                                <li><a class="dropdown-item" href="/registroEditorial">Registro Editorial</a></li>
+                                <li><a class="dropdown-item" th:href="@{/registroLibro}">Registro Libro</a></li>
+                                <li><a class="dropdown-item" th:href="@{/registroAutor}">Registro Autor</a></li>
+                                <li><a class="dropdown-item" th:href="@{/registroEditorial}">Registro Editorial</a></li>
+                                <li><a class="dropdown-item" th:href="@{/libros}">Libros</a></li>
+                                <li><a class="dropdown-item" th:href="@{/autores}">Autores</a></li>
+                                <li><a class="dropdown-item" th:href="@{/editoriales}">Editoriales</a></li>
                             </ul>
                         </div>
                     </ul>
@@ -42,26 +45,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
         </nav>
-        <form class="formulario">
+        <form class="formulario" method="post" th:action="@{/registroLibro}" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="isbn" class="form-label">ISBN</label>
-                <input type="text" class="form-control" id="isbn">
+                <input type="text" class="form-control" id="isbn" name="isbn">
             </div>
             <div class="mb-3">
                 <label for="titulo" class="form-label">Titulo</label>
-                <input type="text" class="form-control" id="titulo">
+                <input type="text" class="form-control" id="titulo" name="titulo">
             </div>
             <div class="mb-3">
                 <label for="anio" class="form-label">Año del libro</label>
-                <input type="text" class="form-control" id="anio">
+                <input type="text" class="form-control" id="anio" name="anio">
             </div>
             <div class="mb-3">
                 <label for="ejemplares" class="form-label">Ejemplares</label>
-                <input type="text" class="form-control" id="ejemplares">
+                <input type="text" class="form-control" id="ejemplares" name="ejemplares">
             </div>
             <div class="mb-3">
                 <label for="foto" class="form-label">Foto</label>
-                <input type="file" class="form-control" id="foto">
+                <input type="file" class="form-control" id="foto" name="foto">
             </div>
 
             <button type="submit" class="btn btn-light">Enviar</button>

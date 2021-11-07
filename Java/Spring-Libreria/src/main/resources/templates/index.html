@@ -3,7 +3,7 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <title>Proyecto Libreria</title>
         <meta charset="UTF-8">
@@ -25,9 +25,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 Secciones
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="/registroLibro">Registro Libro</a></li>
-                                <li><a class="dropdown-item" href="/registroAutor">Registro Autor</a></li>
-                                <li><a class="dropdown-item" href="/registroEditorial">Registro Editorial</a></li>
+                                <li><a class="dropdown-item" th:href="@{/registroLibro}">Registro Libro</a></li>
+                                <li><a class="dropdown-item" th:href="@{/registroAutor}">Registro Autor</a></li>
+                                <li><a class="dropdown-item" th:href="@{/registroEditorial}">Registro Editorial</a></li>
+                                <li><a class="dropdown-item" th:href="@{/libros}">Libros</a></li>
+                                <li><a class="dropdown-item" th:href="@{/autores}">Autores</a></li>
+                                <li><a class="dropdown-item" th:href="@{/editoriales}">Editoriales</a></li>
                             </ul>
                         </div>
                     </ul>
