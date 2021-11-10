@@ -52,8 +52,7 @@ public class AutorServicio {
         validar(nombre);
 
         //Buscamos el autor
-        Autor autor = new Autor();
-        autor = autorRepositorio.buscarPorID(id);
+        Autor autor = getOne(id);
 
         //Modificamos los valores
         autor.setNombre(nombre);
@@ -76,8 +75,7 @@ public class AutorServicio {
     public void baja(String id) throws Exception {
 
         //Buscamos el autor
-        Autor autor = new Autor();
-        autor = autorRepositorio.buscarPorID(id);
+        Autor autor = getOne(id);
         
         //Modificamos los valores
         autor.setAlta(false);
@@ -90,12 +88,8 @@ public class AutorServicio {
     @Transactional
     public void eliminar(String id) throws Exception {
         
-        //Buscamos el autor
-        Autor autor = new Autor();
-        autor = autorRepositorio.buscarPorID(id);
-        
         //Cargamos en la DB
-        autorRepositorio.delete(autor);
+        autorRepositorio.deleteById(id);
         
     }
     
@@ -103,8 +97,7 @@ public class AutorServicio {
     public void alta(String id) throws Exception {
         
         //Buscamos el autor
-        Autor autor = new Autor();
-        autor = autorRepositorio.buscarPorID(id);
+        Autor autor = getOne(id);
         
         //Modificamos los valores
         autor.setAlta(true);
@@ -118,10 +111,15 @@ public class AutorServicio {
     public Autor buscarPorNombre(String nombre){
         return autorRepositorio.buscarPorNombre(nombre);
     }
+    
+    @Transactional (readOnly = true)
+    public Autor getOne(String id) {
+        return autorRepositorio.getOne(id);
+    }
 
     public void validar(String nombre) throws Exception {
 
-        if (nombre == null) {
+        if (nombre == null || nombre.isEmpty()) {
             throw new Exception("El nombre del autor no puede ser nulo");
         }
 

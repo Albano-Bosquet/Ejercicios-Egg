@@ -52,8 +52,7 @@ public class EditorialServicio {
         validar(nombre);
 
         //Buscamos la editorial
-        Editorial editorial = new Editorial();
-        editorial = editorialRepositorio.buscarPorID(id);
+        Editorial editorial = getOne(id);
 
         //Modificamos los valores
         editorial.setNombre(nombre);
@@ -76,8 +75,7 @@ public class EditorialServicio {
     public void baja(String id) throws Exception {
 
         //Buscamos la editorial
-        Editorial editorial = new Editorial();
-        editorial = editorialRepositorio.buscarPorID(id);
+        Editorial editorial = getOne(id);
         
         //Modificamos los valores
         editorial.setAlta(false);
@@ -91,11 +89,10 @@ public class EditorialServicio {
     public void eliminar(String id) throws Exception {
         
         //Buscamos la editorial
-        Editorial editorial = new Editorial();
-        editorial = editorialRepositorio.buscarPorID(id);
+        Editorial editorial = getOne(id);
         
         //Cargamos en la DB
-        editorialRepositorio.delete(editorial);
+        editorialRepositorio.deleteById(id);
         
     }
     
@@ -103,8 +100,7 @@ public class EditorialServicio {
     public void alta(String id) throws Exception {
         
         //Buscamos la editorial
-        Editorial editorial = new Editorial();
-        editorial = editorialRepositorio.buscarPorID(id);
+        Editorial editorial = getOne(id);
         
         //Modificamos los valores
         editorial.setAlta(true);
@@ -118,10 +114,15 @@ public class EditorialServicio {
     public Editorial buscarPorNombre(String nombre) {
         return editorialRepositorio.buscarPorNombre(nombre);
     }
+    
+    @Transactional (readOnly = true)
+    public Editorial getOne(String id) {
+        return editorialRepositorio.getOne(id);
+    }
 
     public void validar(String nombre) throws Exception {
 
-        if (nombre == null) {
+        if (nombre == null || nombre.isEmpty()) {
             throw new Exception("El nombre de la editorial no puede ser nulo");
         }
 

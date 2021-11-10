@@ -113,6 +113,9 @@ public class UsuarioServicio implements UserDetailsService {
         if (!(clave.equals(clave2))){
             throw new Exception("Las claves del usuario difieren");
         }
+        if (clave.length() < 5) {
+            throw new Exception("La clave debe tener 6 caracteres o mas");
+        }
 
     }
 

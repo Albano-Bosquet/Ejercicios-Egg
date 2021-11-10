@@ -26,9 +26,6 @@ public class Libro implements Serializable {
     private Long isbn;
     private String titulo;
     private Integer anio;
-    private Integer ejemplares;
-    private Integer ejemplaresPrestados;
-    private Integer ejemplaresRestantes;
     private Boolean alta;
     
     @OneToOne
@@ -55,18 +52,6 @@ public class Libro implements Serializable {
 
     public Integer getAnio() {
         return anio;
-    }
-
-    public Integer getEjemplares() {
-        return ejemplares;
-    }
-
-    public Integer getEjemplaresPrestados() {
-        return ejemplaresPrestados;
-    }
-
-    public Integer getEjemplaresRestantes() {
-        return ejemplaresRestantes;
     }
 
     public Boolean getAlta() {
@@ -100,18 +85,6 @@ public class Libro implements Serializable {
 
     public void setAnio(Integer anio) {
         this.anio = anio;
-    }
-
-    public void setEjemplares(Integer ejemplares) {
-        this.ejemplares = ejemplares;
-    }
-
-    public void setEjemplaresPrestados(Integer ejemplaresPrestados) {
-        this.ejemplaresPrestados = ejemplaresPrestados;
-    }
-
-    public void setEjemplaresRestantes(Integer ejemplaresRestantes) {
-        this.ejemplaresRestantes = ejemplaresRestantes;
     }
 
     public void setAlta(Boolean alta) {

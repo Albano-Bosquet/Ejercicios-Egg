@@ -3,12 +3,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 4 nov. 2021, 18:21:43
+    Created on : 9 nov. 2021, 19:24:30
     Author     : blackstrack
 */
 
 #barra {
-
+    
 }
 
 #botones {
@@ -35,18 +35,4 @@ body {
     color: white;
     -webkit-text-stroke: 0.6px black;
     font-size: 20px;
-}
-
-.validaciones {
-    border-radius: 5px;
-    background-color: #6c767e;
-    border-top-width: 10px;
-    color: #ff6666;
-}
-
-.formulario2 {
-    border-radius: 5px;
-    background-color: #6c767e;
-    border-top-width: 10px;
-    padding: 10px;
 }

@@ -4,14 +4,12 @@
  */
 package com.albano.ProyectoLibreria.controladores;
 
-import com.albano.ProyectoLibreria.entidades.Autor;
-import java.util.List;
+import com.albano.ProyectoLibreria.servicios.LibroServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.albano.ProyectoLibreria.repositorios.AutorRepositorio;
-import org.springframework.ui.ModelMap;
 
 /**
  *
@@ -19,17 +17,15 @@ import org.springframework.ui.ModelMap;
  */
 @Controller
 @RequestMapping("/")
-public class AutoresControlador {
+public class EliminarLibroControlador {
     
     @Autowired
-    private AutorRepositorio autorRepositorio;
+    private LibroServicio libroServicio;
     
-    //Autores
-    @GetMapping("/autores")
-    public String autores(ModelMap modelo) {
-        List<Autor> autores = autorRepositorio.findAll();
-        modelo.put("autores", autores);
-        return "autores";
+    //Eliminar Libro
+    @GetMapping("/eliminarLibro")
+    public String eliminarLibro() {
+        return "eliminarLibro";
     }
     
 }

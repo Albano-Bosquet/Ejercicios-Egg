@@ -37,9 +37,15 @@ public class RegistroUsuarioControlador {
 
         try {
             usuarioServicio.crear(foto, nombre, clave, mail, clave2);
-            return "index";
+            modelo.put("Exito", "Ha sido registrado exitosamente");
+            return "registroUsuario";
         } catch (Exception e) {
-            modelo.put("fallo", "Registro de autor ha fallado");
+            modelo.put("Error", e.getMessage());
+            modelo.put("foto", foto);
+            modelo.put("nombre", nombre);
+            modelo.put("clave", clave);
+            modelo.put("mail", mail);
+            modelo.put("clave2", clave2);
             return "registroUsuario";
         }
 

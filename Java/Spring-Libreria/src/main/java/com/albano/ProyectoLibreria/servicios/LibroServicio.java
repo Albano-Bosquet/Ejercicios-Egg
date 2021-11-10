@@ -28,19 +28,16 @@ public class LibroServicio {
     private FotoServicio fotoServicio;
 
     @Transactional
-    public void crear(MultipartFile archivo, Long isbn, String titulo, Integer anio, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes, Autor autor, Editorial editorial) throws Exception {
+    public void crear(MultipartFile archivo, Long isbn, String titulo, Integer anio, Autor autor, Editorial editorial) throws Exception {
 
         //Realizamos las validaciones
-        validar(isbn, titulo, anio, ejemplares, ejemplaresPrestados, ejemplaresRestantes, autor, editorial);
+        validar(isbn, titulo, anio);
 
         //Guardamos los valores
         Libro libro = new Libro();
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);
         libro.setAnio(anio);
-        libro.setEjemplares(ejemplares);
-        libro.setEjemplaresPrestados(ejemplaresPrestados);
-        libro.setEjemplaresRestantes(ejemplaresRestantes);
         libro.setAutor(autor);
         libro.setEditorial(editorial);
         libro.setAlta(true);
@@ -55,24 +52,18 @@ public class LibroServicio {
     }
 
     @Transactional
-    public void modificar(MultipartFile archivo, Long isbn, String titulo, Integer anio, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes, Autor autor, Editorial editorial, String id) throws Exception {
+    public void modificar(MultipartFile archivo, Long isbn, String titulo, Integer anio, String id) throws Exception {
 
         //Realizamos las validaciones
-        validar(isbn, titulo, anio, ejemplares, ejemplaresPrestados, ejemplaresRestantes, autor, editorial);
+        validar(isbn, titulo, anio);
 
         //Buscamos el libro
-        Libro libro = new Libro();
-        libro = libroRepositorio.buscarPorID(id);
+        Libro libro = getOne(id);
 
         //Modificamos los valores
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);
         libro.setAnio(anio);
-        libro.setEjemplares(ejemplares);
-        libro.setEjemplaresPrestados(ejemplaresPrestados);
-        libro.setEjemplaresRestantes(ejemplaresRestantes);
-        libro.setAutor(autor);
-        libro.setEditorial(editorial);
         
         //Cargamos la foto
         String idFoto = null;
@@ -92,8 +83,7 @@ public class LibroServicio {
     public void baja(String id) throws Exception {
 
         //Buscamos el libro
-        Libro libro = new Libro();
-        libro = libroRepositorio.buscarPorID(id);
+        Libro libro = getOne(id);
 
         //Modificamos los valores
         libro.setAlta(false);
@@ -107,8 +97,7 @@ public class LibroServicio {
     public void eliminar(String id) throws Exception {
 
         //Buscamos el libro
-        Libro libro = new Libro();
-        libro = libroRepositorio.buscarPorID(id);
+        Libro libro = getOne(id);
 
         //Cargamos en la DB
         libroRepositorio.delete(libro);
@@ -119,8 +108,7 @@ public class LibroServicio {
     public void alta(String id) throws Exception {
         
         //Buscamos el libro
-        Libro libro = new Libro();
-        libro = libroRepositorio.buscarPorID(id);
+        Libro libro = getOne(id);
         
         //Modificamos los valores
         libro.setAlta(true);
@@ -155,31 +143,21 @@ public class LibroServicio {
         return (Libro) libroRepositorio.buscarPorAutor(autor);
     }
 
-    public void validar(Long isbn, String titulo, Integer anio, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes, Autor autor, Editorial editorial) throws Exception {
+    @Transactional (readOnly = true)
+    public Libro getOne(String id) {
+        return libroRepositorio.getOne(id);
+    }
+    
+    public void validar(Long isbn, String titulo, Integer anio) throws Exception {
 
         if (isbn == null) {
             throw new Exception("El ISBN del libro no puede ser nulo");
         }
-        if (titulo == null) {
+        if (titulo == null || titulo.isEmpty()) {
             throw new Exception("El titulo del libro no puede ser nulo");
         }
         if (anio == null) {
             throw new Exception("El año del libro no puede ser nulo");
-        }
-        if (ejemplares == null) {
-            throw new Exception("Los ejemplares de libros no pueden ser nulos");
-        }
-        if (ejemplaresPrestados == null) {
-            throw new Exception("Los ejemplares prestados de libros no pueden ser nulos");
-        }
-        if (ejemplaresRestantes == null) {
-            throw new Exception("Los ejemplares restantes de libros no pueden ser nulos");
-        }
-        if (autor == null) {
-            throw new Exception("El autor del libro no puede ser nulo");
-        }
-        if (editorial == null) {
-            throw new Exception("La editorial del libro no puede ser nula");
         }
 
     }

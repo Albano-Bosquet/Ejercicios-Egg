@@ -45,7 +45,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
         </nav>
-        
+
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Alta</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody th:each="autor : ${autores}">
+                <tr>
+                    <td th:text="${autor.id}"></td>
+                    <td th:text="${autor.nombre}"></td>
+                    <td>
+                        <i th:if="${autor.alta}"><img src="/images/Alta.png" width="20"/></i>
+                        <i th:unless="${autor.alta}"><img src="/images/Baja.png" width="20"/></i>
+                    </td>
+                    <td>
+                        <a th:href="@{/modificarAutor/__${autor.id}__}"><img src="/images/Editar.png" alt="alt" width="20"/></a>
+                        <a th:href="@{/altaAutor/__${autor.id}__}"><img src="/images/AltaLogo.png" alt="alt" width="20"/></a>
+                        <a th:href="@{/bajaAutor/__${autor.id}__}"><img src="/images/BajaLogo.png" alt="alt" width="20"/></a>
+                        <a th:href="@{/eliminarAutor/__${autor.id}__}"><img src="/images/Eliminar.png" alt="alt" width="20"/></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -36,9 +36,12 @@ public class RegistroAutorControlador {
 
         try {
             autorServicio.crear(foto, nombre);
+            modelo.put("Exito", "Ha registrado el autor con exito");
             return "registroAutor";
         } catch (Exception e) {
-            modelo.put("fallo", "Registro de autor ha fallado");
+            modelo.put("Error", e.getMessage());
+            modelo.put("nombre", nombre);
+            modelo.put("foto", foto);
             return "registroAutor";
         }
 
