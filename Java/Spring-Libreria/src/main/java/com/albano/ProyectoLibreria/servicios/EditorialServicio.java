@@ -117,7 +117,7 @@ public class EditorialServicio {
     
     @Transactional (readOnly = true)
     public Editorial getOne(String id) {
-        return editorialRepositorio.getOne(id);
+        return editorialRepositorio.buscarPorID(id);
     }
 
     public void validar(String nombre) throws Exception {

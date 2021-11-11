@@ -75,7 +75,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <a th:href="@{/modificarLibro/__${libro.id}__}"><img src="/images/Editar.png" alt="alt" width="20"/></a>
                         <a th:href="@{/altaLibro/__${libro.id}__}"><img src="/images/AltaLogo.png" alt="alt" width="20"/></a>
                         <a th:href="@{/bajaLibro/__${libro.id}__}"><img src="/images/BajaLogo.png" alt="alt" width="20"/></a>
-                        <a th:href="@{/eliminarLibro/__${libro.id}__}"><img src="/images/Eliminar.png" alt="alt" width="20"/></a>
+                        <!-- Button trigger modal -->
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <img src="/images/Eliminar.png" alt="alt" width="20"/>
+                        </a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h2>Está seguro que desea eliminar este libro?</h2>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal"><img src="/images/Baja.png" alt="alt" width="20"/></button>
+                                        <button type="button" class="btn btn-dark"><a th:href="@{/eliminarLibro/__${libro.id}__}"><img src="/images/Alta.png" alt="alt" width="20"/></a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </tbody>

@@ -47,7 +47,7 @@ public class RegistroLibroControlador {
     }
 
     @PostMapping("/registroLibro")
-    public String registrolibro(ModelMap modelo, MultipartFile foto, @RequestParam Long isbn, @RequestParam String titulo, @RequestParam Integer anio, @RequestParam Autor autor, @RequestParam Editorial editorial) {
+    public String registrolibro(ModelMap modelo, MultipartFile foto, Long isbn, @RequestParam String titulo, Integer anio, @RequestParam Autor autor, @RequestParam Editorial editorial) {
         try {
             libroServicio.crear(foto, isbn, titulo, anio, autor, editorial);
             modelo.put("Exito", "Ha registrado el libro con exito");
@@ -58,8 +58,6 @@ public class RegistroLibroControlador {
             modelo.put("isbn", isbn);
             modelo.put("titulo", titulo);
             modelo.put("anio", anio);
-            modelo.put("autor", autor);
-            modelo.put("editorial", editorial);
             return "registroLibro";
         }
     }
