@@ -7,14 +7,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : blackstrack
 */
 
-#barra {
-    
-}
-
-#botones {
-    margin: 3px;
-}
-
 #imagenes {
     width: 30px;
     margin: 6px;
@@ -35,4 +27,22 @@ body {
     color: white;
     -webkit-text-stroke: 0.6px black;
     font-size: 20px;
+}
+
+.usuariologueado{
+    color: white;
+    background-color: #6c767e;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.botones{
+    margin: 5px;
+}
+
+.usuario{
+    color: #6c767e;
+    font-size: 30px;
+    -webkit-text-stroke: 1px white;
 }

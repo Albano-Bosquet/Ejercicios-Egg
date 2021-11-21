@@ -12,39 +12,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-custom" id="barra">
-            <div class="container-fluid">
-                <img src="images/logo-libro.png" id="imagenes"/>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <form method="get" action="/">
-                            <button type="submit" class="btn btn-secondary" id="botones">Inicio</button>
-                        </form>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Secciones
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" th:href="@{/registroLibro}">Registro Libro</a></li>
-                                <li><a class="dropdown-item" th:href="@{/registroAutor}">Registro Autor</a></li>
-                                <li><a class="dropdown-item" th:href="@{/registroEditorial}">Registro Editorial</a></li>
-                                <li><a class="dropdown-item" th:href="@{/libros}">Libros</a></li>
-                                <li><a class="dropdown-item" th:href="@{/autores}">Autores</a></li>
-                                <li><a class="dropdown-item" th:href="@{/editoriales}">Editoriales</a></li>
-                            </ul>
-                        </div>
-                    </ul>
-                    <div class="d-flex">
-                        <form method="get" action="/registroUsuario">
-                            <button type="submit" class="btn btn-secondary" id="botones">Registrarse</button>
-                        </form>
-                        <form method="get" action="/loginUsuario">
-                            <button type="submit" class="btn btn-secondary" id="botones">Loguearse</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        
+        <nav th:replace="/fragments/navbar :: nav"></nav>
+        
         <form class="formulario" method="post" th:action="@{/registroUsuario}" enctype="multipart/form-data">
 
             <div class="validaciones" style="text-align: center">

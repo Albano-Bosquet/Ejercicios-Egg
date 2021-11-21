@@ -21,19 +21,19 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/")
 public class modificarAutorControlador {
-    
+
     @Autowired
     private AutorServicio autorServicio;
-    
+
     //Modificar Autor
     @GetMapping("/modificarAutor/{id}")
     public String modificarAutor(@PathVariable String id, ModelMap modelo) {
         modelo.put("autor", autorServicio.getOne(id));
         return "modificarAutor";
     }
-    
+
     @GetMapping("/altaAutor/{id}")
-    public String altaAutor(@PathVariable String id){
+    public String altaAutor(@PathVariable String id) {
         try {
             autorServicio.alta(id);
             return "redirect:/autores";
@@ -41,9 +41,9 @@ public class modificarAutorControlador {
             return "redirect:/";
         }
     }
-    
+
     @GetMapping("/bajaAutor/{id}")
-    public String bajaAutor(@PathVariable String id){
+    public String bajaAutor(@PathVariable String id) {
         try {
             autorServicio.baja(id);
             return "redirect:/autores";
@@ -51,9 +51,9 @@ public class modificarAutorControlador {
             return "redirect:/";
         }
     }
-    
+
     @GetMapping("/modifAutor/{id}")
-    public String modificarAutor(ModelMap modelo, @PathVariable String id, @RequestParam String nombre, MultipartFile foto){
+    public String modificarAutor(ModelMap modelo, @PathVariable String id, @RequestParam String nombre, MultipartFile foto) {
         try {
             autorServicio.modificar(foto, nombre, id);
             return "redirect:/autores";
@@ -61,9 +61,9 @@ public class modificarAutorControlador {
             return "redirect:/autores";
         }
     }
-    
+
     @GetMapping("/eliminarAutor/{id}")
-    public String eliminarAutor(@PathVariable String id, ModelMap modelo){
+    public String eliminarAutor(@PathVariable String id, ModelMap modelo) {
         try {
             autorServicio.eliminar(id);
             return "redirect:/autores";
@@ -71,5 +71,5 @@ public class modificarAutorControlador {
             return "redirect:/autores";
         }
     }
-    
+
 }

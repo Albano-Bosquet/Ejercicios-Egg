@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-custom" id="barra">
+    <div class="container-fluid">
+        <img src="images/logo-libro.png" id="imagenes"/>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <form method="get" action="/">
+                    <button type="submit" class="btn btn-secondary botones" id="botones" style="margin: 7.4px">Inicio</button>
+                </form>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle botones" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Secciones
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" th:href="@{/registroLibro}">Registro Libro</a></li>
+                        <li><a class="dropdown-item" th:href="@{/registroAutor}">Registro Autor</a></li>
+                        <li><a class="dropdown-item" th:href="@{/registroEditorial}">Registro Editorial</a></li>
+                        <li><a class="dropdown-item" th:href="@{/libros}">Libros</a></li>
+                        <li><a class="dropdown-item" th:href="@{/autores}">Autores</a></li>
+                        <li><a class="dropdown-item" th:href="@{/editoriales}">Editoriales</a></li>
+                    </ul>
+                </div>
+            </ul>
+            <h1 th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}" class="usuario"></h1>
+            <div class="d-flex">
+                <a th:if="${session.usuariosession == null}" href="/registroUsuario" th:text="Registrarse" class="btn btn-secondary botones"></a>
+                <a th:if="${session.usuariosession == null}" href="/loginUsuario" th:text="Loguearse" class="btn btn-secondary botones"></a>
+                <a th:if="${session.usuariosession != null}" href="/logout" th:text="Salir" class="btn btn-secondary botones"></a>
+            </div>
+        </div>
+    </div>
+</nav>

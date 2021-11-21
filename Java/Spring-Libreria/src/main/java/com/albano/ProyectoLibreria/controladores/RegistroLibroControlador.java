@@ -58,6 +58,8 @@ public class RegistroLibroControlador {
             modelo.put("isbn", isbn);
             modelo.put("titulo", titulo);
             modelo.put("anio", anio);
+            modelo.put("autor", autor);
+            modelo.put("editorial", editorial);
             return "registroLibro";
         }
     }

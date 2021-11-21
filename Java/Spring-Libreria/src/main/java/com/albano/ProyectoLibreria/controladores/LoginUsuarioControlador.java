@@ -6,10 +6,12 @@ package com.albano.ProyectoLibreria.controladores;
 
 import com.albano.ProyectoLibreria.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -24,16 +26,19 @@ public class LoginUsuarioControlador {
 
     //Login de usuario
     @GetMapping("/loginUsuario")
-    public String logueousuario() {
+    public String logueousuario(@RequestParam(required = false) String error, ModelMap modelo) {
+        if (error != null) {
+            modelo.put("Error", "Usuario o clave incorrectos");
+        }
         return "loginUsuario";
     }
 
-//    @PostMapping("/loginUsuario")
-//    public String logueousuario() {
-//        try {
-//
-//        } catch (Exception e) {
-//        }
-//    }
+    @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
+    @GetMapping("/inicio")
+    public String inicio(){
+        return "inicio";
+    }
 
+    
+    
 }

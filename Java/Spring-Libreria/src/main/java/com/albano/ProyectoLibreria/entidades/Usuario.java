@@ -4,8 +4,11 @@
  */
 package com.albano.ProyectoLibreria.entidades;
 
+import com.albano.ProyectoLibreria.enums.Rol;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -26,6 +29,10 @@ public class Usuario implements Serializable {
     private String clave;
     private String clave2;
     private String mail;
+    
+    //Para manejar los roles
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
     
     @OneToOne
     private Foto foto;
@@ -54,6 +61,10 @@ public class Usuario implements Serializable {
     public String getMail() {
         return mail;
     }
+
+    public Rol getRol() {
+        return rol;
+    }
     
     //Setters
     public void setId(String id) {
@@ -78,6 +89,10 @@ public class Usuario implements Serializable {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     @Override

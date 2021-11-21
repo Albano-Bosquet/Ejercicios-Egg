@@ -4,6 +4,8 @@
  */
 package com.albano.ProyectoLibreria.configuraciones;
 
+import com.albano.ProyectoLibreria.servicios.UsuarioServicio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -27,7 +29,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/*", "/js/*", "/img/*", "/**").permitAll()
                 .and().formLogin()
-                .loginPage("/login") // Que formulario esta mi login
+                .loginPage("/loginUsuario") // Que formulario esta mi login
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("username") // Como viajan los datos del logueo
                 .passwordParameter("password")// Como viajan los datos del logueo
@@ -35,7 +37,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and().logout() // Aca configuro la salida
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/loginUsuario")
                 .permitAll().and().csrf().disable();
     }
 }
